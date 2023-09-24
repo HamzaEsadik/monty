@@ -1,19 +1,19 @@
 #include "monty.h"
 /**
- * h_add - adds the top two elements.
- * @head: stack
- * @counter: line_number
- * Return: no return
+ * h_add - adds top two elements
+ * @head: head.. stack
+ * @counter: # line
+ * Return: no R
 */
 void h_add(stack_t **head, unsigned int counter)
 {
-	stack_t *h;
+	stack_t *j;
 	int len = 0, aux;
 
-	h = *head;
-	while (h)
+	j = *head;
+	while (j)
 	{
-		h = h->next;
+		j = j->next;
 		len++;
 	}
 	if (len < 2)
@@ -24,17 +24,17 @@ void h_add(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	aux = h->n + h->next->n;
-	h->next->n = aux;
-	*head = h->next;
-	free(h);
+	j = *head;
+	aux = j->n + j->next->n;
+	j->next->n = aux;
+	*head = j->next;
+	free(j);
 }
 /**
- * addnode - add node to the head.
- * @head: head of the stack
- * @n: new value
- * Return: no return
+ * addnode - add node to head.
+ * @head: head.. stack
+ * @n: value
+ * Return: no R
 */
 void addnode(stack_t **head, int n)
 {
@@ -54,12 +54,12 @@ void addnode(stack_t **head, int n)
 	*head = new_node;
 }
 /**
-* execute - executes the opcode
-* @stack: head linked list - stack
-* @counter: line_counter
-* @file: poiner to monty file
-* @content: line content
-* Return: no return
+* execute - executes opcode
+* @stack: head linked list.. stack
+* @counter: line.. counter
+* @file: poiner to monty
+* @content: line of content
+* Return: no R
 */
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
@@ -105,47 +105,47 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 	return (1);
 }
 /**
- * h_div - divides the top two elements.
- * @head: stack head
- * @counter: line_number
- * Return: no return
+ * h_div - divides top two elements.
+ * @head: head.. stack
+ * @counter: # line
+ * Return: no R
 */
 void h_div(stack_t **head, unsigned int counter)
 {
-	stack_t *h;
+	stack_t *j;
 	int len = 0, aux;
 
-	h = *head;
-	while (h)
+	j = *head;
+	while (j)
 	{
-		h = h->next;
+		j = j->next;
 		len++;
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't div, stack is short\n", counter);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	if (h->n == 0)
+	j = *head;
+	if (j->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", counter);
+		fprintf(stderr, "L%d: division by 0\n", counter);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	aux = h->next->n / h->n;
-	h->next->n = aux;
-	*head = h->next;
-	free(h);
+	aux = j->next->n / j->n;
+	j->next->n = aux;
+	*head = j->next;
+	free(j);
 }
 /**
-* free_stack - frees a doubly linked list
-* @head: head of the stack
+* free_stack - free doubly linked list
+* @head: head.. stack
 */
 void free_stack(stack_t *head)
 {

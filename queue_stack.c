@@ -1,9 +1,9 @@
 #include "monty.h"
 /**
- * h_queue - prints the top
- * @head: stack head
- * @counter: line_number
- * Return: no return
+ * h_queue - prints top
+ * @head: head.. stack
+ * @counter: # line
+ * Return: no R
 */
 void h_queue(stack_t **head, unsigned int counter)
 {
@@ -13,10 +13,10 @@ void h_queue(stack_t **head, unsigned int counter)
 }
 
 /**
- * addqueue - add node to the tail stack
- * @n: new_value
- * @head: head of the stack
- * Return: no return
+ * addqueue - add node to end stack
+ * @n: value
+ * @head: head.. stack
+ * Return: no R
 */
 void addqueue(stack_t **head, int n)
 {
@@ -47,10 +47,10 @@ void addqueue(stack_t **head, int n)
 	}
 }
 /**
- * h_stack - prints the top
- * @head: stack head
- * @counter: line_number
- * Return: no return
+ * h_stack - prints top
+ * @head: head.. stack
+ * @counter: # line
+ * Return: no R
 */
 void h_stack(stack_t **head, unsigned int counter)
 {
