@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
  * h_pint - prints the top
- * @head: stack head
- * @counter: line_number
+ * @head: stack
+ * @counter: line number
  * Return: no return
 */
 void h_pint(stack_t **head, unsigned int counter)
@@ -19,8 +19,8 @@ void h_pint(stack_t **head, unsigned int counter)
 }
 /**
  * h_pop - prints the top
- * @head: stack head
- * @counter: line_number
+ * @head: stack
+ * @counter: line number
  * Return: no return
 */
 void h_pop(stack_t **head, unsigned int counter)
@@ -40,10 +40,9 @@ void h_pop(stack_t **head, unsigned int counter)
 	free(h);
 }
 /**
- * h_pstr - prints the string starting at the top of the stack,
- * followed by a new
- * @head: stack head
- * @counter: line_number
+ * h_pstr - prints string starting at the top
+ * @head: stack
+ * @counter: line number
  * Return: no return
 */
 void h_pstr(stack_t **head, unsigned int counter)
@@ -64,14 +63,14 @@ void h_pstr(stack_t **head, unsigned int counter)
 	printf("\n");
 }
 /**
- * h_push - add node to the stack
- * @head: stack head
- * @counter: line_number
+ * h_push - add node
+ * @head: stack
+ * @counter: line number
  * Return: no return
 */
 void h_push(stack_t **head, unsigned int counter)
 {
-	int n, j = 0, flag = 0;
+	int n, j = 0, fl = 0;
 
 	if (bus.arg)
 	{
@@ -80,8 +79,8 @@ void h_push(stack_t **head, unsigned int counter)
 		for (; bus.arg[j] != '\0'; j++)
 		{
 			if (bus.arg[j] > 57 || bus.arg[j] < 48)
-				flag = 1; }
-		if (flag == 1)
+				fl = 1; }
+		if (fl == 1)
 		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
 			fclose(bus.file);
 			free(bus.content);
@@ -100,21 +99,21 @@ void h_push(stack_t **head, unsigned int counter)
 		addqueue(head, n);
 }
 /**
-  *h_rotl- rotates the stack to the top
-  *@head: stack head
-  *@counter: line_number
+  *h_rotl- rotates stack to the top
+  *@head: stack
+  *@counter: line number
   *Return: no return
  */
 void h_rotl(stack_t **head,  __attribute__((unused)) unsigned int counter)
 {
-	stack_t *tmp = *head, *aux;
+	stack_t *tmp = *head, *ax;
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
 	}
-	aux = (*head)->next;
-	aux->prev = NULL;
+	ax = (*head)->next;
+	ax->prev = NULL;
 	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
@@ -122,5 +121,5 @@ void h_rotl(stack_t **head,  __attribute__((unused)) unsigned int counter)
 	tmp->next = *head;
 	(*head)->next = NULL;
 	(*head)->prev = tmp;
-	(*head) = aux;
+	(*head) = ax;
 }

@@ -1,18 +1,18 @@
 #include "monty.h"
 /**
-  *h_sub- sustration
-  *@head: stack head
-  *@counter: line_number
+  *h_sub- the sustration
+  *@head: stack
+  *@counter: line number
   *Return: no return
  */
 void h_sub(stack_t **head, unsigned int counter)
 {
-	stack_t *aux;
+	stack_t *ax;
 	int sus, nodes;
 
-	aux = *head;
-	for (nodes = 0; aux != NULL; nodes++)
-		aux = aux->next;
+	ax = *head;
+	for (nodes = 0; ax != NULL; nodes++)
+		ax = ax->next;
 	if (nodes < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
@@ -21,22 +21,22 @@ void h_sub(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	aux = *head;
-	sus = aux->next->n - aux->n;
-	aux->next->n = sus;
-	*head = aux->next;
-	free(aux);
+	ax = *head;
+	sus = ax->next->n - ax->n;
+	ax->next->n = sus;
+	*head = ax->next;
+	free(ax);
 }
 /**
- * h_swap - adds the top two elements of the stack.
- * @head: stack head
- * @counter: line_number
+ * h_swap - adds the top two elements
+ * @head: stack
+ * @counter: line number
  * Return: no return
 */
 void h_swap(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
-	int len = 0, aux;
+	int len = 0, ax;
 
 	h = *head;
 	while (h)
@@ -53,32 +53,32 @@ void h_swap(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 	h = *head;
-	aux = h->n;
+	ax = h->n;
 	h->n = h->next->n;
-	h->next->n = aux;
+	h->next->n = ax;
 }
 /**
-  *h_rotr- rotates the stack to the bottom
-  *@head: stack head
-  *@counter: line_number
+  *h_rotr- rotates stack to the bottom
+  *@head: stack
+  *@counter: line number
   *Return: no return
  */
 void h_rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
 {
-	stack_t *copy;
+	stack_t *new;
 
-	copy = *head;
+	new = *head;
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
 	}
-	while (copy->next)
+	while (new->next)
 	{
-		copy = copy->next;
+		new = new->next;
 	}
-	copy->next = *head;
-	copy->prev->next = NULL;
-	copy->prev = NULL;
-	(*head)->prev = copy;
-	(*head) = copy;
+	new->next = *head;
+	new->prev->next = NULL;
+	new->prev = NULL;
+	(*head)->prev = new;
+	(*head) = new;
 }
